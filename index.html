@@ -343,7 +343,7 @@
           </div>
           <a
             id="telegramBtn"
-            href="https://t.me/your_telegram_channel"
+            href="https://t.me/SpeakEnglishd"
             target="_blank"
             rel="noopener noreferrer"
             class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 shrink-0"
@@ -603,7 +603,7 @@
 
     <script>
       // Telegram Link Configuration
-      const TELEGRAM_LINK = "https://t.me/your_telegram_channel";
+      const TELEGRAM_LINK = "https://t.me/SpeakEnglishd";
       document.getElementById("telegramBtn").href = TELEGRAM_LINK;
 
       let soundEnabled = true;
@@ -678,19 +678,6 @@
         }
       }
 
-      // Helper to extract clean YouTube Video ID from any URL format
-      function extractYouTubeId(urlOrId) {
-        if (!urlOrId) return "";
-        const trimmed = urlOrId.trim();
-        if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) {
-          return trimmed;
-        }
-        const regExp =
-          /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|shorts\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        const match = trimmed.match(regExp);
-        return match && match[2].length === 11 ? match[2] : trimmed;
-      }
-
       // Personal Notes Notebook Functions
       function loadPersonalNotes() {
         const notes =
@@ -759,33 +746,17 @@
                   dayNumber: 1,
                   title: "اليوم 1",
                   description: "محتوى اليوم الأول وتدريباته التفاعلية.",
-                  timeEstimate: "15 دقيقة",
+                  timeEstimate: "الوقت المتوقع ساعتين مذاكرة",
                   isLocked: false,
                   content: [
                     {
                       type: "video",
                       title: "🎬 الشرح بالفيديو (YouTube)",
-                      youtubeId:
-                        "https://youtu.be/WioL50vGE04?si=bi1zMmWTEXZfNjdn",
+                      youtubeId: "kVG3-3nmRcI",
                       notes:
                         "شاهد الفيديو بتركيز، كرر النطق بصوت عالٍ، ودوّن الملاحظات الجديدة.",
                     },
-                    {
-                      type: "vocab_list",
-                      title: "🗣️ مصطلحات اليوم مع النطق الصوتي",
-                      terms: [
-                        { en: "Court", ar: "محكمة" },
-                        { en: "Lawyer / Attorney", ar: "محامي / وكيل قانوني" },
-                        { en: "Judge", ar: "قاضي" },
-                        { en: "Client", ar: "موكّل / عميل" },
-                        { en: "Legal System", ar: "النظام القانوني" },
-                      ],
-                    },
-                    {
-                      type: "text",
-                      title: "💬 جملة اليوم للتدريب التطبيقي",
-                      body: `"I am a lawyer specialized in commercial law."\n(أنا محامٍ متخصص في القانون التجاري).`,
-                    },
+
                     {
                       type: "task",
                       id: "t1-1",
@@ -796,14 +767,26 @@
                       type: "task",
                       id: "t1-2",
                       title: "✅ المهمة الثانية (Task 2)",
-                      text: "اكتب ملخص للفيديو وابعته لشات جي بي تي يصحح ليك اخطائك في الجرامر والكتابة",
+                      text: "اكتب ملخص للفيديو وابعته لشات جي بي تي يصحح ليك اخطائك في الجرامر والكتابة بعدين ابعت النص بعد التصحيح علي التيليجرام",
                     },
                     {
                       type: "link",
-                      title: "الدرس الأول جرام",
+                      title: "الدرس الأول جرام المضارع البسيط",
                       label:
-                        "اسمع الفيديو كويس جدا وافهم القاعده وحل عليها واكتب في تيليجرام 3 اسئلة و 3 اجابات باستخدام الزمن اللي تعلمته",
+                        "اضغط هنا واسمع الفيديو كويس جدا وافهم القاعده وحل عليها واكتب في تيليجرام 3 اسئلة و 3 اجابات باستخدام الزمن اللي تعلمته",
                       url: "https://elllo.org/book/A2/A2-01-Present-Simple.html",
+                    },
+                    {
+                      type: "task",
+                      id: "t1-3",
+                      title: "محادثة",
+                      text: "اعمل محادثة صوتية مع اي زميل ليك عن موضوع الفيديو",
+                    },
+                    {
+                      type: "task",
+                      id: "t1-4",
+                      title: "✅ اخيرا",
+                      text: "قول رايك عن اليوم الاول في جروب التيليجرام بالانجليزي",
                     },
                   ],
                 },
@@ -1247,21 +1230,14 @@
                   let contentItemsHTML = "";
                   day.content.forEach((item) => {
                     if (item.type === "video") {
-                      const ytId = extractYouTubeId(item.youtubeId);
                       contentItemsHTML += `
                       <div class="space-y-2 bg-slate-900/90 p-3.5 sm:p-4 rounded-xl border border-slate-800">
-                        <div class="flex items-center justify-between gap-2">
-                          <div class="flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-300">
-                            <i class="fa-solid fa-circle-play text-red-500 text-sm"></i>
-                            <span>${item.title}</span>
-                          </div>
-                          <a href="https://www.youtube.com/watch?v=${ytId}" target="_blank" rel="noopener noreferrer" class="text-[11px] text-slate-400 hover:text-red-400 flex items-center gap-1 transition-colors bg-slate-800/80 px-2 py-1 rounded-lg border border-slate-700/60">
-                            <span>مشاهدة في يوتيوب</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                          </a>
+                        <div class="flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-300">
+                          <i class="fa-solid fa-circle-play text-red-500 text-sm"></i>
+                          <span>${item.title}</span>
                         </div>
                         <div class="relative w-full aspect-video rounded-lg overflow-hidden border border-slate-800 shadow-lg bg-black">
-                          <iframe class="w-full h-full" src="https://www.youtube.com/embed/${ytId}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          <iframe class="w-full h-full" src="https://www.youtube.com/embed/${item.youtubeId}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         ${item.notes ? `<p class="text-xs text-slate-400 bg-slate-800/60 p-2.5 rounded-lg border border-slate-700/50 leading-relaxed"><i class="fa-solid fa-lightbulb text-amber-400 ml-1"></i> ${item.notes}</p>` : ""}
                       </div>
